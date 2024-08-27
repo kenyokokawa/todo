@@ -25,13 +25,13 @@ const NewTask: React.FC<NewTaskProps> = ({ onAddTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full flex">
-      <div className="w-full flex items-center border-2 border-blue-400 rounded-xl overflow-hidden">
+    <form onSubmit={handleSubmit} className="w-full flex flex-col justify-center">
+      <div className="w-full flex items-center h-max border-2 border-blue-400 rounded-xl overflow-hidden brand-shadow">
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="Add a new task"
+          placeholder="Make a new task"
           className="flex-grow p-2 pl-4 outline-none"
         />
         {title && (

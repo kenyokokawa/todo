@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NewTask from "./NewTask";
 import TaskView from "./TaskView";
 import ColumnLabel from "./ColumnLabel";
+import Logo from "./Logo";
 
 export type Task = {
   id: string;
@@ -38,26 +39,34 @@ const TaskManager: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <>
       <NewTask onAddTask={addTask} />
-      <ColumnLabel label="To do " color="green-500" />
-      {tasks.map((task) => {
-        const isEditing = editingTaskId === task.id;
-        return (
-          <TaskView
-            key={task.id}
-            task={task}
-            onEdit={() => startEditing(task.id)}
-            isEditing={isEditing}
-            onSave={(t) => {
-              updateTask(t);
-              stopEditing();
-            }}
-            onCancelEditing={() => stopEditing()}
-          />
-        );
-      })}
-    </div>
+      <Logo />
+      <div className="bg-green-200 rounded-xl "></div>
+      <ColumnLabel label="To do" backgroundColor="bg-green-500" />
+      <ColumnLabel label="In progress" backgroundColor="bg-yellow-500" />
+      <ColumnLabel label="Done!" backgroundColor="bg-blue-500" />
+      <div className="flex flex-col gap-4 bg-stone-50 rounded-xl p-3">
+        {tasks.map((task) => {
+          const isEditing = editingTaskId === task.id;
+          return (
+            <TaskView
+              key={task.id}
+              task={task}
+              onEdit={() => startEditing(task.id)}
+              isEditing={isEditing}
+              onSave={(t) => {
+                updateTask(t);
+                stopEditing();
+              }}
+              onCancelEditing={() => stopEditing()}
+            />
+          );
+        })}
+      </div>
+      <div className="min-h-36 border-dashed border-4 border-sky-500 rounded-xl"></div>
+      <div className="bg-stone-50  rounded-xl"></div>
+    </>
   );
 };
 

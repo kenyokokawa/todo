@@ -30,7 +30,7 @@ const TaskView: React.FC<TaskViewProps> = ({
     onSave(editedTask);
   };
   return (
-    <div className="w-100 rounded-xl p-4 brand-shadow " onClick={onEdit}>
+    <div className="w-100 rounded-xl p-4 bg-white brand-shadow " onClick={onEdit}>
       {
         <p className="text-sm text-left m-[9px] text-neutral-400">
           {formatDate(task.createdAt)}
@@ -73,7 +73,7 @@ const TaskView: React.FC<TaskViewProps> = ({
                 e.stopPropagation();
                 onCancelEditing();
               }}
-              className="p-1 rounded-lg bg-red-500"
+              className="p-1 rounded-md bg-red-500"
             >
               <XIcon size={16} />
             </button>
@@ -82,7 +82,7 @@ const TaskView: React.FC<TaskViewProps> = ({
                 e.stopPropagation();
                 handleSubmit();
               }}
-              className="p-1 rounded-lg bg-blue-500"
+              className="p-1 rounded-md bg-blue-500"
             >
               <CheckIcon size={18} />
             </button>
