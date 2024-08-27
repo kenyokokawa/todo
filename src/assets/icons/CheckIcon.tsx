@@ -12,8 +12,8 @@ const CheckIcon = ({ size }: { size: number }) => {
       <path
         d="M2 6.73684L5.85714 11L14 2"
         stroke="white"
-        stroke-width="3"
-        stroke-linecap="round"
+        strokeWidth="3"
+        strokeLinecap="round"
       />
     </svg>
   );
