@@ -1,8 +1,10 @@
+export type TaskStatus = "todo" | "in-progress" | "done";
+
 export type Task = {
   id: string;
   title: string;
   subtitle?: string;
-  status: "todo" | "in-progress" | "done";
+  status: TaskStatus;
   priority?: "low" | "medium" | "high";
   dueDate?: Date;
   createdAt: Date;

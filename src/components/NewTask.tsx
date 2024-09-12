@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Task } from "./TaskManager"; // Ensure this path is correct based on your project structure
 import PlusIcon from "../assets/icons/PlusIcon";
+import { Task } from "../contexts/TaskContext";
 
 interface NewTaskProps {
   onAddTask: (task: Task) => void;
@@ -25,7 +25,10 @@ const NewTask: React.FC<NewTaskProps> = ({ onAddTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full flex flex-col justify-center">
+    <form
+      onSubmit={handleSubmit}
+      className="w-full flex flex-col justify-center"
+    >
       <div className="w-full flex items-center h-max border-2 border-blue-400 rounded-xl overflow-hidden brand-shadow">
         <input
           type="text"
