@@ -1,4 +1,15 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import {
+  getFromLocalStorage,
+  LocalStorageKeys,
+  saveToLocalStorage,
+} from "../utils/localStorage";
 
 export type Task = {
   id: string;
@@ -24,17 +35,35 @@ type TaskContextType = {
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
 export const TaskProvider = ({ children }: { children: ReactNode }) => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const tasksJson = getFromLocalStorage(LocalStorageKeys.TASKS) as Task[];
+    return tasksJson.map((task) => ({
+      ...task,
+      dueDate: task.dueDate ? new Date(task.dueDate) : undefined,
+      createdAt: new Date(task.createdAt || new Date()),
+      updatedAt: task.updatedAt ? new Date(task.updatedAt) : undefined,
+    }));
+  });
   const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
 
+  useEffect(() => {
+    saveToLocalStorage(tasks, LocalStorageKeys.TASKS);
+  }, [tasks]);
+
   const addTask = (task: Task) => {
-    setTasks([...tasks, task]);
+    setTasks((prevTasks) => {
+      const newTasks = [...prevTasks, task];
+      return newTasks;
+    });
   };
 
   const updateTask = (updatedTask: Task) => {
-    setTasks(
-      tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task))
-    );
+    setTasks((prevTasks) => {
+      const newTasks = prevTasks.map((task) =>
+        task.id === updatedTask.id ? updatedTask : task
+      );
+      return newTasks;
+    });
   };
 
   const startEditing = (taskId: string) => {
@@ -61,6 +90,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTaskContext = () => {
   const context = useContext(TaskContext);
   if (!context) {
