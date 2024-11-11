@@ -40,7 +40,7 @@ const NewTask: React.FC<NewTaskProps> = ({ onAddTask }) => {
         {title && (
           <button
             type="submit"
-            className="bg-blue-500 text-white p-1.5 mr-1.5 rounded-lg "
+            className="bg-blue-500 text-white p-1.5 mr-1.5 rounded-lg"
           >
             <PlusIcon size={18} />
           </button>
