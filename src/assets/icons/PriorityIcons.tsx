@@ -28,7 +28,6 @@ const MediumPriorityIcon = ({
 }: {
   size: number;
   color?: string;
-
 }) => {
   return (
     <svg
@@ -51,7 +50,6 @@ const HighPriorityIcon = ({
 }: {
   size: number;
   color?: string;
-
 }) => {
   return (
     <svg

@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import React, { FC } from "react";
 type ColumnLabelProps = {
   label: string;
@@ -11,8 +12,8 @@ const ColumnLabel: FC<ColumnLabelProps> = ({
   textColor = "white",
 }) => {
   return (
-    <div className={`py-0.5 px-4 w-max rounded-lg ${backgroundColor} `}>
-      <p className={`text-sm text-${textColor}`}>{label}</p>
+    <div className="flex justify-start items-center">
+      <Badge className={`${backgroundColor} text-${textColor}`} >{label}</Badge>
     </div>
   );
 };

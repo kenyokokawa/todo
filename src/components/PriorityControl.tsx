@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Priority } from "../types/task";
 import PriorityButton from "./PriorityButton";
+import { PRIORITY_OPTIONS } from "@/constants/controls";
 
 type PriorityControlProps = {
   priority: Priority;
@@ -30,15 +31,13 @@ const PriorityControl = ({
     onChange(priority);
   };
 
-  const priorityOptions: Priority[] = ["low", "medium", "high"];
-
   return (
     <div className="flex items-center" onClick={onEdit}>
       {isExpanded ? (
         <div className="flex gap-1">
-          {priorityOptions.map((option) => (
-            <div onClick={() => onUpdate(option)}>
-              <PriorityButton priority={option} />
+          {PRIORITY_OPTIONS.map((option) => (
+            <div onClick={() => onUpdate(option.value)}>
+              <PriorityButton priority={option.value} />
             </div>
           ))}
         </div>

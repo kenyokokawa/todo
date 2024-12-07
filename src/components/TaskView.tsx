@@ -6,6 +6,7 @@ import { formatDate } from "../utils/date";
 import { useDraggable } from "@dnd-kit/core";
 import PriorityControl from "./PriorityControl";
 import EditableField from "./EditableField";
+import { Button } from "@/components/ui/button";
 
 interface TaskViewProps {
   task: Task;

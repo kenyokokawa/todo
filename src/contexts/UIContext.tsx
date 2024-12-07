@@ -9,8 +9,8 @@ interface UIContextType {
   setSortBy: (value: SortBy) => void;
   filterBy: FilterBy;
   setFilterBy: (value: FilterBy) => void;
-  isSettingsModalOpen: boolean;
-  setIsSettingsModalOpen: (value: boolean) => void;
+  defaultPriority: Priority;
+  setDefaultPriority: (value: Priority) => void;
 }
 
 const UIContext = createContext<UIContextType | undefined>(undefined);
@@ -31,15 +31,15 @@ interface UIProviderProps {
 export const UIProvider: React.FC<UIProviderProps> = ({ children }) => {
   const [sortBy, setSortBy] = useState<SortBy>("");
   const [filterBy, setFilterBy] = useState<FilterBy>("");
-  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+  const [defaultPriority, setDefaultPriority] = useState<Priority>("low");
 
   const value = {
     sortBy,
     setSortBy,
     filterBy,
     setFilterBy,
-    isSettingsModalOpen,
-    setIsSettingsModalOpen,
+    defaultPriority,
+    setDefaultPriority,
   };
 
   return <UIContext.Provider value={value}>{children}</UIContext.Provider>;
