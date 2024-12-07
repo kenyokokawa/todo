@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PlusIcon from "../assets/icons/PlusIcon";
 import { Task } from "../contexts/TaskContext";
+import { useUIContext } from "@/contexts/UIContext";
 
 interface NewTaskProps {
   onAddTask: (task: Task) => void;
@@ -8,7 +9,7 @@ interface NewTaskProps {
 
 const NewTask: React.FC<NewTaskProps> = ({ onAddTask }) => {
   const [title, setTitle] = useState("");
-
+  const { defaultPriority } = useUIContext();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (title.trim() === "") return;
@@ -18,6 +19,7 @@ const NewTask: React.FC<NewTaskProps> = ({ onAddTask }) => {
       title,
       status: "todo",
       createdAt: new Date(),
+      priority: defaultPriority,
     };
 
     onAddTask(newTask);
