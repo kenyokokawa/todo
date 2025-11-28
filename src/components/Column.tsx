@@ -52,7 +52,7 @@ const Column: FC<ColumnProps> = ({ status }) => {
   const { isOver, setNodeRef } = useDroppable({
     id: status,
   });
-  const className = `flex flex-col gap-4 min-h-40 rounded-xl  ${
+  const className = `flex flex-col gap-4 min-h-40 rounded-2xl  ${
     isOver ? "border-dashed border-4 border-sky-500 p-2" : "bg-stone-100 p-3"
   }`;
 

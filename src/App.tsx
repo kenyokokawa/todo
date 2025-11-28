@@ -5,7 +5,7 @@ import { UIProvider } from "./contexts/UIContext";
 
 function App() {
   return (
-    <div className="grid grid-flow-row grid-cols-3 w-full gap-x-4 gap-y-8">
+    <div className="grid grid-flow-row grid-cols-3 w-full gap-x-4">
       <TaskProvider>
         <UIProvider>
           <TaskManager />

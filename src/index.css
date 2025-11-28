@@ -70,7 +70,12 @@
   * {
     @apply border-border;
   }
+  html {
+    min-width: 680px;
+    overflow-x: auto;
+  }
   body {
     @apply bg-background text-foreground;
+    min-width: 680px;
   }
 }
